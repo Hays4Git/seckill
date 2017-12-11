@@ -37,7 +37,7 @@ public class SeckillServiceImplTest extends SpringJUnitBase{
 
     @Test
     public void doKill() throws Exception {
-        long seckillId = 1000L;
+        long seckillId = 1001;
         Exposer exposer = seckillService.exportSeckillUrl(seckillId);
         log.info(exposer);
         if(exposer.isExposed()){

@@ -26,6 +26,8 @@
     <druid.version>1.1.1</druid.version>
     <jstl.version>1.2</jstl.version>
     <taglibs.version>1.1.2</taglibs.version>
+    <jedis.version>2.9.0</jedis.version>
+    <protostuff.version>1.0.12</protostuff.version>
   </properties>
   <dependencies>
     <!--spring相关依赖-->
@@ -144,6 +146,22 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>${jedis.version}</version>
+    </dependency>
+    <!--序列化工具-->
+    <dependency>
+      <groupId>com.dyuproject.protostuff</groupId>
+      <artifactId>protostuff-core</artifactId>
+      <version>${protostuff.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.dyuproject.protostuff</groupId>
+      <artifactId>protostuff-runtime</artifactId>
+      <version>${protostuff.version}</version>
     </dependency>
   </dependencies>
   <build>

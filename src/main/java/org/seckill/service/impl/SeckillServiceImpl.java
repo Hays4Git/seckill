@@ -4,6 +4,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.seckill.dao.SeckillDao;
 import org.seckill.dao.SuccessKilledDao;
+import org.seckill.dao.cache.RedisDao;
 import org.seckill.dto.Exposer;
 import org.seckill.dto.SeckillExecution;
 import org.seckill.entity.Seckill;
@@ -32,6 +33,8 @@ public class SeckillServiceImpl implements SeckillService {
     private SeckillDao seckillDao;
     @Autowired
     private SuccessKilledDao successKilledDao;
+    @Autowired
+    private RedisDao redisDao;
 
     private final static String slat = "fdsfasfasfd#^*$(%)_)@";
 
@@ -47,9 +50,14 @@ public class SeckillServiceImpl implements SeckillService {
 
     @Override
     public Exposer exportSeckillUrl(long seckillId) {
-        Seckill seckill = seckillDao.queryById(seckillId);
-        if (seckill == null) {//没有秒杀记录
-            return new Exposer(false, seckillId);
+        Seckill seckill = redisDao.getSeckill(seckillId);
+        if(seckill == null){
+            seckill = seckillDao.queryById(seckillId);
+            if (seckill == null) {//没有秒杀记录
+                return new Exposer(false, seckillId);
+            } else {
+                redisDao.putSeckill(seckill);
+            }
         }
         Date startTime = seckill.getStartTime();
         Date endTime = seckill.getEndTime();
