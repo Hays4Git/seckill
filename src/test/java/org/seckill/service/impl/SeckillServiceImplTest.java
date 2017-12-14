@@ -56,4 +56,18 @@ public class SeckillServiceImplTest extends SpringJUnitBase{
         }
     }
 
+    @Test
+    public void doKillByProcedure() throws Exception {
+        long seckillId = 1002;
+        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        log.info(exposer);
+        if(exposer.isExposed()){
+            long phone = 15813362362L;
+            String md5 = exposer.getMd5();
+            SeckillExecution seckillExecution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+            log.info(seckillExecution);
+        } else {
+            log.warn(exposer);
+        }
+    }
 }

@@ -28,6 +28,7 @@
     <taglibs.version>1.1.2</taglibs.version>
     <jedis.version>2.9.0</jedis.version>
     <protostuff.version>1.0.12</protostuff.version>
+    <collections.version>3.2.2</collections.version>
   </properties>
   <dependencies>
     <!--spring相关依赖-->
@@ -162,6 +163,11 @@
       <groupId>com.dyuproject.protostuff</groupId>
       <artifactId>protostuff-runtime</artifactId>
       <version>${protostuff.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>${collections.version}</version>
     </dependency>
   </dependencies>
   <build>

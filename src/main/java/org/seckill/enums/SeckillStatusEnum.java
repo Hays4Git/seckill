@@ -11,6 +11,14 @@ public enum SeckillStatusEnum {
     INNER_ERROR(-2, "系统异常"),
     DATA_REWRITE(-3, "数据篡改");
 
+    public static SeckillStatusEnum statusOf(int key){
+        for (SeckillStatusEnum status : values()){
+            if(status.getStatus() == key){
+                return status;
+            }
+        }
+        return null;
+    }
 
     private int status;
     private String statusInfo;

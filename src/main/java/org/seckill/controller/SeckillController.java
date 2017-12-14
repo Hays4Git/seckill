@@ -62,7 +62,7 @@ public class SeckillController {
         if(phone == null){
             throw new SeckillException("no registe");
         }
-        SeckillExecution seckillExecution = seckillService.executeSeckill(seckillId, phone, md5);
+        SeckillExecution seckillExecution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
         return new SeckillResult(true, seckillExecution);
     }
 
